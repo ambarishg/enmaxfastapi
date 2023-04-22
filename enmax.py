@@ -1,4 +1,3 @@
-import streamlit as st
 import pandas as pd
 import pickle
 from sklearn.metrics.pairwise import cosine_similarity
@@ -7,7 +6,7 @@ import string
 from sentence_transformers import SentenceTransformer
 
 #key = st.secrets["OPENAI_KEY"]
-key = "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"
+key = ""
 filename_pickle ="ENMAX_ESG_FULL.pkl"
 
 import os
