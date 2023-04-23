@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enmaxdeploy
+  labels:
+    app: enmaxweb
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: enmaxweb
+  template:
+    metadata:
+      labels:
+        app: enmaxweb
+    spec:
+      containers:
+        - name: enmaxfastapiimage
+          image: enmaxacr.azurecr.io/enmaxfastapi:v1
+          ports:
+            - containerPort: 8000
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: enmax-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8000
+  selector:
+    app: enmaxweb
